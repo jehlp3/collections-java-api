@@ -19,12 +19,12 @@ public class Dicionario {
     public void removerPalavra(String palavra) {
         if (!dicionarioPalavrasMap.isEmpty()) {
             dicionarioPalavrasMap.remove(palavra);
-        }
+        } //Adicionar else para caso o dicionário estiver vazio!
     }
 
     public void exibirPalavras() {
         System.out.println(dicionarioPalavrasMap);
-    }
+    } //Adicionar else para caso o dicionário estiver vazio!
 
     public void pesquisarPorPalavra(String palavra) {
         String definicaoPalavra = dicionarioPalavrasMap.get(palavra);
