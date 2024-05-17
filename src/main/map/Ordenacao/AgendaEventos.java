@@ -1,6 +1,7 @@
 package main.map.Ordenacao;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.*;
 
 public class AgendaEventos {
@@ -35,7 +36,7 @@ public class AgendaEventos {
         LocalDate proximaData = null;
         Evento proximoEvento = null;
         Map<LocalDate, Evento> eventosTreeMap = new TreeMap<>(eventosMap);
-        for (Map.Entry<LocalDate, Evento> entry : eventosMap.entrySet()) {  //entrySet() retorna um Set (elementos únicos dif do Map)
+        for (Map.Entry<LocalDate, Evento> entry : eventosTreeMap.entrySet()) {  //entrySet() retorna um Set (elementos únicos dif do Map)
             if (entry.getKey().isEqual(dataAtual) || entry.getKey().isAfter(dataAtual)) {
                 proximaData = entry.getKey();
                 proximoEvento = entry.getValue();
@@ -49,6 +50,14 @@ public class AgendaEventos {
     public static void main(String[] args) {
         AgendaEventos agendaEventos = new AgendaEventos();
 
-        agendaEventos.adicionarEvento(26/04/2025, "Lollapalloza 2025", "Lady Gaga");
+        agendaEventos.adicionarEvento(LocalDate.of(2025, Month.APRIL, 24), "Lollapalloza 2025", "Lady Gaga");
+        agendaEventos.adicionarEvento(LocalDate.of(2024, Month.NOVEMBER, 06), "Iron Maiden SP", "Iron Maiden");
+        agendaEventos.adicionarEvento(LocalDate.of(2024, Month.NOVEMBER, 14), "M72 World Tour", "Metallica");
+        agendaEventos.adicionarEvento(LocalDate.of(2024, Month.SEPTEMBER, 20), "Rock in Rio", "Imagine Dragons");
+        agendaEventos.adicionarEvento(LocalDate.of(2024, Month.APRIL, 23), "Lollapalloza 2024", "Hozier");
+
+        agendaEventos.exibirAgenda();
+
+        agendaEventos.obterProximoEvento();
     }
 }
